@@ -1,0 +1,15 @@
+.lista {
+    text-align: left;   
+}
+
+.tb {
+    margin: 30px;
+    border-collapse: collapse;
+    width: auto;
+}
+
+.t1, .t2 {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
