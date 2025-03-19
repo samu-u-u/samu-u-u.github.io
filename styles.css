@@ -1,9 +1,9 @@
 .lista {
-    text-align: left;   
+    text-align: left; 
 }
 
 .tb {
-    margin: 30px;
+    margin: 0 auto;
     border-collapse: collapse;
     width: auto;
 }
@@ -12,4 +12,12 @@
     border: 1px solid black;
     padding: 8px;
     text-align: left;
+}
+
+.header {
+    text-align:center;
+}
+
+body {
+    background-color: #00fff7;
 }
