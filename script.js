@@ -6,13 +6,13 @@ function news(category) {
       .then(data => {
           const noticiasDiv = document.getElementById(category);
           noticiasDiv.innerHTML = '';
-          
           data.articles.slice(0, 10).forEach(article => {
-              const noticia = document.createElement('div');
+              const noticia = document.createElement('div')
               noticia.className = category;
 
               noticia.innerHTML = `
                   <h3>${article.title}</h3>
+                  <h6>${article.source.name}</h6>
                   <p>${article.description}</p>
                   <a href="${article.url}" target="_blank">Read more</a>
                   <p></p>
@@ -22,3 +22,15 @@ function news(category) {
       })
 }
 
+function hour(){
+    const fecha = new Date();
+    const hora = fecha.getHours();
+    const minutos = fecha.getMinutes();
+    const segundos = fecha.getSeconds();
+    let clock = document.getElementById("clock")
+    clock.innerHTML = `${hora}:${minutos}:${segundos}`
+}
+
+function setclock(){
+    setInterval(hour, 1000)
+}
