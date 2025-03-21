@@ -8,9 +8,18 @@
         <link href="styles.css" rel="stylesheet">
         <script src="script.js" defer></script>
     </head>
-    <body onload="news('politics'); news('business')">
+    <body onload="news('politics'); news('business'); setclock()">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand">My personal page</a>
+                <div id="clock">00:00:00</div>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+          </nav>
         <div class = "container-fluid text-center">
-            <h1 class = "header">My personal page</h1>
             <br>
             <div class = "row align-items-start">
                 <div class = "col-md-6 col-lg-4">
@@ -68,6 +77,42 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div> 
+        </div>
+        <br>
+        <h2 class = "header">Sponsored content</h2>
+        <br>
+        <div class = "container-fluid text-center">  
+            <div class="row justify-content-around">    
+                <div class="col-md-6 col-lg-4">        
+                    <div class="card mx-auto" style="width: 18rem;">
+                        <img src="Uandes Esports.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Join the Uandes Esports Team!!!</p>
+                            <a href="https://www.instagram.com/uandes_esports/" class="card-link">Síguenos en instagram</a>
+                            <a href="https://discord.com/invite/68stHgcvTY" class="card-link">Únete al discord</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card mx-auto" style="width: 18rem;">
+                        <img src="Don Carter.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Don Carter | Gira Europea 2025</p>
+                            <a href="https://www.comoestawally.com" class="card-link">Venta de entradas</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card mx-auto" style="width: 18rem;">
+                        <img src="metalfest.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Metal Fest en Chile | 11 de mayo en Movistar Arena</p>
+                            <p class="card-text">No te quedes fuera de la auténtica fiesta del metal y compra tus entradas ya!</p>
+                            <a href="https://www.puntoticket.com/the-metal-fest-2025" class="card-link">Venta de entradas</a>
+                        </div>
+                    </div>
                 </div>
             </div> 
         </div>
