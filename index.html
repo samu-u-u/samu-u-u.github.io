@@ -64,8 +64,8 @@
   #theme-toggle {
     border: none;
     border-radius: 8px;
-    width: 36px;
-    height: 32px;
+    min-height: 32px;
+    padding: 0.3rem 0.8rem;
     background: rgba(255, 255, 255, 0.14);
     color: #fff;
     font-size: 1rem;
@@ -74,6 +74,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.35rem;
+    white-space: nowrap;
     transition: background-color 0.2s ease;
   }
   #theme-toggle:hover { background: rgba(255, 255, 255, 0.28); }
