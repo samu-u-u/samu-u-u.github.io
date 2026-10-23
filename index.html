@@ -12,7 +12,28 @@
     --muted: #5b6478;
     --accent: #2563eb;
     --accent-dark: #1e3a8a;
+    --nav-bg: #1e3a8a;
     --line: #e3e8f2;
+    --bar-bg: #e8edf7;
+    --chip-bg: #e8edf7;
+    --chip-ink: #1e3a8a;
+    --success: #0f766e;
+    --error: #dc2626;
+  }
+  body.dark {
+    --bg: #0b1220;
+    --card: #141c2e;
+    --ink: #e6eaf4;
+    --muted: #98a3ba;
+    --accent: #3b82f6;
+    --accent-dark: #1d4ed8;
+    --nav-bg: #0e1730;
+    --line: #2a3550;
+    --bar-bg: #26304a;
+    --chip-bg: #1f2c4d;
+    --chip-ink: #c4d3f2;
+    --success: #34d399;
+    --error: #f87171;
   }
   * { box-sizing: border-box; }
   body {
@@ -21,6 +42,7 @@
     background: var(--bg);
     color: var(--ink);
     line-height: 1.55;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   /* ---------- Navbar ---------- */
   nav {
@@ -32,11 +54,29 @@
     justify-content: space-between;
     gap: 1rem;
     padding: 0.7rem 1.4rem;
-    background: var(--accent-dark);
+    background: var(--nav-bg);
     color: #fff;
     box-shadow: 0 2px 12px rgba(20, 35, 90, 0.35);
+    transition: background-color 0.3s ease;
   }
+  .nav-left { display: flex; align-items: center; gap: 0.6rem; }
   nav .brand { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.3px; }
+  #theme-toggle {
+    border: none;
+    border-radius: 8px;
+    width: 36px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+  }
+  #theme-toggle:hover { background: rgba(255, 255, 255, 0.28); }
   #clock {
     font-variant-numeric: tabular-nums;
     font-weight: 600;
@@ -100,6 +140,7 @@
     border-radius: 14px;
     padding: 1.3rem 1.4rem;
     box-shadow: 0 4px 14px rgba(28, 35, 51, 0.06);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
   h2 {
     font-size: 1.15rem;
@@ -130,7 +171,7 @@
   .bar {
     height: 8px;
     border-radius: 999px;
-    background: #e8edf7;
+    background: var(--bar-bg);
     overflow: hidden;
   }
   .bar i {
@@ -166,6 +207,8 @@
     font-family: inherit;
     font-size: 0.92rem;
     outline: none;
+    background: var(--bg);
+    color: var(--ink);
   }
   .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
   .contact-form button {
@@ -180,17 +223,19 @@
     cursor: pointer;
   }
   .contact-form button:hover { background: var(--accent-dark); }
+  .contact-form button:disabled { opacity: 0.65; cursor: wait; }
   #contact-msg {
     margin-top: 0.8rem;
     font-size: 0.9rem;
-    color: #0f766e;
+    color: var(--success);
     font-weight: 600;
     min-height: 1.2em;
   }
+  #contact-msg.error { color: var(--error); }
   .interests span {
     display: inline-block;
-    background: #e8edf7;
-    color: var(--accent-dark);
+    background: var(--chip-bg);
+    color: var(--chip-ink);
     border-radius: 999px;
     padding: 0.28rem 0.75rem;
     font-size: 0.82rem;
@@ -201,9 +246,10 @@
   footer {
     text-align: center;
     padding: 1.2rem;
-    background: var(--accent-dark);
+    background: var(--nav-bg);
     color: rgba(255, 255, 255, 0.85);
     font-size: 0.85rem;
+    transition: background-color 0.3s ease;
   }
   @media (max-width: 640px) {
     nav { flex-wrap: wrap; justify-content: center; }
@@ -214,7 +260,10 @@
 </head>
 <body>
 <nav>
-  <div class="brand">My personal page</div>
+  <div class="nav-left">
+    <div class="brand">My personal page</div>
+    <button id="theme-toggle" type="button" aria-label="Switch dark / light mode" title="Dark / light mode">🌙</button>
+  </div>
   <div id="clock">00:00:00</div>
   <form id="search-form" role="search">
     <input type="search" id="search-input" placeholder="Search..." aria-label="Search">
@@ -285,27 +334,27 @@
     <div class="card">
       <h2>Political news</h2>
       <article class="news-item">
-        <h3>Kast anuncia su primer presupuesto, centrado en seguridad y empleo</h3>
-        <p>El proyecto de Presupuestos 2027 sube 1,5% e incrementa en 9,1% los fondos para seguridad y en 8,1% los destinados a crecimiento y empleo, frente a una desocupación del 9,5%, la más alta en cinco años.</p>
-        <div class="meta"><span class="tag">AFP</span>1 de octubre de 2026</div>
+        <h3>Congreso aprueba ley para agilizar la expulsión de inmigrantes irregulares</h3>
+        <p>La nueva ley permite a la policía solicitar a un juez autorización para ingresar a un domicilio y aprehender a personas con orden de salida del país, y facilita a las autoridades notificar esas órdenes. Se estima que más de 330.000 migrantes viven en situación irregular en Chile.</p>
+        <div class="meta"><span class="tag">AFP</span>21 de octubre de 2026</div>
       </article>
       <article class="news-item">
-        <h3>Kast da marcha atrás en su reforma de seguridad ante escaso apoyo en el Congreso</h3>
-        <p>El gobierno retiró su paquete de ocho reformas constitucionales —que incluía un criticado estado de excepción de hasta 240 días sin aprobación parlamentaria— y respaldó un proyecto alternativo elaborado en el Senado.</p>
-        <div class="meta"><span class="tag">AFP</span>7 de octubre de 2026</div>
+        <h3>Chile reporta 110 detenidos en protestas por el aniversario del estallido social</h3>
+        <p>La primera marcha del mandato de Kast se concentró en el centro de Santiago, donde la policía dispersó a los manifestantes con cañones de agua y bombas lacrimógenas. Hubo 14 policías y 4 civiles heridos, y casi la mitad de detenidos que el año anterior.</p>
+        <div class="meta"><span class="tag">AFP</span>19 de octubre de 2026</div>
       </article>
     </div>
     <div class="card">
       <h2>Business news</h2>
       <article class="news-item">
-        <h3>Preacuerdo evita huelga en Escondida, la mayor mina de cobre del mundo</h3>
-        <p>El sindicato de supervisores y la australiana BHP alcanzaron un preacuerdo de contrato colectivo, eludiendo un paro que amenazaba con agitar el mercado del cobre. En Escondida se produce un cuarto del cobre chileno.</p>
-        <div class="meta"><span class="tag">AFP</span>14 de octubre de 2026</div>
+        <h3>¿Por qué cae la producción de cobre en Chile en pleno boom de la demanda mundial?</h3>
+        <p>Chile, que aporta un cuarto del cobre extraído en el mundo, registró en agosto su menor producción mensual en 15 años, afectada por minas envejecidas, proyectos retrasados y fuertes lluvias, lo que presiona los precios del metal, que suben más de 16% este año.</p>
+        <div class="meta"><span class="tag">AFP</span>21 de octubre de 2026</div>
       </article>
       <article class="news-item">
-        <h3>Chile anuncia plan para crear más de 100.000 empleos ante crisis de desocupación</h3>
-        <p>El plan moviliza más de US$1.300 millones en inversión, obras y medidas de empleo, incluyendo un subsidio a la contratación en los sectores y zonas más golpeados por el desempleo.</p>
-        <div class="meta"><span class="tag">AFP</span>28 de septiembre de 2026</div>
+        <h3>Gobierno critica a las AFP por pérdidas de US$7.700 millones en apuesta financiera</h3>
+        <p>El regulador del sector abrió una investigación contra las siete administradoras de pensiones tras las pérdidas del fondo E, que cayó 10,4% entre enero y septiembre por operaciones que apostaban a una baja de las tasas de interés en Estados Unidos.</p>
+        <div class="meta"><span class="tag">AFP</span>21 de octubre de 2026</div>
       </article>
     </div>
   </div>
@@ -317,9 +366,11 @@
       <h2>Leave a message</h2>
       <form class="contact-form" id="contact-form">
         <label for="name">Your name</label>
-        <input type="text" id="name" placeholder="Enter your name..." required>
+        <input type="text" id="name" name="name" placeholder="Enter your name..." required>
+        <label for="email">Your email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email..." required>
         <label for="message">Message</label>
-        <textarea id="message" rows="3" placeholder="Write me a short message..."></textarea>
+        <textarea id="message" name="message" rows="3" placeholder="Write me a short message..." required></textarea>
         <button type="submit">Send</button>
       </form>
       <div id="contact-msg"></div>
@@ -351,14 +402,66 @@
   setclock();
   setInterval(setclock, 1000);
 
-  document.getElementById("contact-form").addEventListener("submit", function (e) {
+  /* ---------- Dark / light mode ---------- */
+  (function () {
+    const themeBtn = document.getElementById("theme-toggle");
+    let saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) { /* storage unavailable */ }
+    const prefersDark = window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.body.classList.add("dark");
+      themeBtn.textContent = "☀️";
+    }
+    themeBtn.addEventListener("click", function () {
+      const dark = document.body.classList.toggle("dark");
+      themeBtn.textContent = dark ? "☀️" : "🌙";
+      try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) { /* ignore */ }
+    });
+  })();
+
+  /* ---------- Contact form (sends to vallettesamuel2@gmail.com via FormSubmit) ---------- */
+  document.getElementById("contact-form").addEventListener("submit", async function (e) {
     e.preventDefault();
+    const form = this;
+    const msg = document.getElementById("contact-msg");
+    const btn = form.querySelector("button[type=submit]");
     const name = document.getElementById("name").value.trim();
-    document.getElementById("contact-msg").textContent = name
-      ? "Thanks, " + name + "! Your message has been noted."
-      : "";
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    if (!name || !email || !message) return;
+    msg.classList.remove("error");
+    msg.textContent = "Sending...";
+    btn.disabled = true;
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/vallettesamuel2@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message,
+          _subject: "New message from your personal page",
+          _template: "table"
+        })
+      });
+      const data = await res.json();
+      if (res.ok && data && (data.success === "true" || data.success === true)) {
+        msg.classList.remove("error");
+        msg.textContent = "Thanks, " + name + "! Your message was sent to my inbox.";
+        form.reset();
+      } else {
+        throw new Error("FormSubmit error");
+      }
+    } catch (err) {
+      msg.classList.add("error");
+      msg.textContent = "Sorry, something went wrong. Please write me at vallettesamuel2@gmail.com";
+    } finally {
+      btn.disabled = false;
+    }
   });
 
+  /* ---------- Search ---------- */
   document.getElementById("search-form").addEventListener("submit", function (e) {
     e.preventDefault();
     const q = document.getElementById("search-input").value.trim().toLowerCase();
