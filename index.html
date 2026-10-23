@@ -411,11 +411,11 @@
       window.matchMedia("(prefers-color-scheme: dark)").matches;
     if (saved === "dark" || (!saved && prefersDark)) {
       document.body.classList.add("dark");
-      themeBtn.textContent = "☀️";
+      themeBtn.textContent = "☀️ Modo Claro"; 
     }
     themeBtn.addEventListener("click", function () {
       const dark = document.body.classList.toggle("dark");
-      themeBtn.textContent = dark ? "☀️" : "🌙";
+      themeBtn.textContent = dark ? "☀️ Modo Claro" : "🌙 Modo Oscuro";
       try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) { /* ignore */ }
     });
   })();
